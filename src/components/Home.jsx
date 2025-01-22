@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Sidenav from './partials/Sidenav'
 import TopNav from './partials/TopNav'
-import axios from '../utils/axios'
+import axiosInstance from '../utils/axios'
 import Header from './partials/Header'
 import HorizontalCards from './partials/HorizontalCards'
 import Dropdown from './partials/Dropdown'
@@ -14,7 +14,7 @@ function Home() {
 
   const getHeaderWallpaper = async () => {
     try {
-      const { data } = await axios.get('/trending/all/day')
+      const { data } = await axiosInstance.get('/trending/all/day')
       let randomData = data.results[(Math.random() * data.results.length).toFixed()]
       setWallpaper(randomData)
     } catch (error) {
@@ -24,7 +24,7 @@ function Home() {
 
   const getTrendingData = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/day`)
+      const { data } = await axiosInstance.get(`/trending/${category}/day`)
       setTrending(data.results)
     } catch (error) {
       console.log("Error", error)

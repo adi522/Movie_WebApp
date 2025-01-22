@@ -1,4 +1,4 @@
-import axios from '../../utils/axios'
+import axiosInstance from '../../utils/axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import noimage from "/noimage.jpg";
@@ -9,7 +9,7 @@ function TopNav() {
 
     const getSearches = async () => {
         try {
-            const { data } = await axios.get(`/search/multi?query=${query}`)
+            const { data } = await axiosInstance.get(`/search/multi?query=${query}`)
             setSearchData(data.results)
         } catch (error) {
             console.log("Error", error)

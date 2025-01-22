@@ -1,17 +1,17 @@
 export { removemovie } from "../reducers/movieSlice"
-import axios from "../../utils/axios";
+import axiosInstance from "../../utils/axios";
 import { loadmovie } from "../reducers/movieSlice";
 
 export const asyncloadmovie = (id) => async (dispatch, getstate) => {
     try {
-        const detail = await axios.get(`/movie/${id}`)
-        const externalId = await axios.get(`/movie/${id}/external_ids`)
-        const recommendations = await axios.get(`/movie/${id}/recommendations`)
-        const similar = await axios.get(`/movie/${id}/similar`)
-        const videos = await axios.get(`/movie/${id}/videos`)
-        const credits = await axios.get(`/movie/${id}/credits`)
-        const translations = await axios.get(`/movie/${id}/translations`)
-        const watchProvider = await axios.get(`/movie/${id}/watch/providers`)
+        const detail = await axiosInstance.get(`/movie/${id}`)
+        const externalId = await axiosInstance.get(`/movie/${id}/external_ids`)
+        const recommendations = await axiosInstance.get(`/movie/${id}/recommendations`)
+        const similar = await axiosInstance.get(`/movie/${id}/similar`)
+        const videos = await axiosInstance.get(`/movie/${id}/videos`)
+        const credits = await axiosInstance.get(`/movie/${id}/credits`)
+        const translations = await axiosInstance.get(`/movie/${id}/translations`)
+        const watchProvider = await axiosInstance.get(`/movie/${id}/watch/providers`)
 
         let allTheData = {
             detail: detail.data,

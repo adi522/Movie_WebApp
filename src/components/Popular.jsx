@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import TopNav from "./partials/TopNav"
 import Dropdown from "./partials/Dropdown"
 import Cards from './partials/Cards'
-import axios from '../utils/axios'
+import axiosInstance from '../utils/axios'
 import { useEffect, useState } from 'react'
 import Loading from './Loading'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -18,7 +18,7 @@ function Popular() {
 
     const getPopular = async () => {
         try {
-            const { data } = await axios.get(`${category}/popular?page=${page}`)
+            const { data } = await axiosInstance.get(`${category}/popular?page=${page}`)
             if (data.results.length > 0) {
                 setPage(page + 1)
                 setPopular((prevState) => [...prevState, ...data.results])

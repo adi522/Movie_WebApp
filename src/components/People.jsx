@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import TopNav from "./partials/TopNav"
 import Cards from './partials/Cards'
-import axios from '../utils/axios'
+import axiosInstance from '../utils/axios'
 import { useEffect, useState } from 'react'
 import Loading from './Loading'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -17,7 +17,7 @@ function People() {
 
     const getPerson = async () => {
         try {
-            const { data } = await axios.get(`/person/${category}?page=${page}`)
+            const { data } = await axiosInstance.get(`/person/${category}?page=${page}`)
             if (data.results.length > 0) {
                 setPage(page + 1)
                 setPerson((prevState) => [...prevState, ...data.results])
