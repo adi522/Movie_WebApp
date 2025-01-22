@@ -4,8 +4,6 @@ import noImage from "/noimage.jpg"
 
 function Header({ wallpaper }) {
 
-    console.log(wallpaper)
-    console.log(wallpaper.first_air_date)
 
     return (
         <div style={{
